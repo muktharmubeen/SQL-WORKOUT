@@ -1,0 +1,203 @@
+
+CREATE TABLE Restaurant7 (
+    Restaurant_Name VARCHAR2(100),
+    Location VARCHAR2(100),
+    Cuisine VARCHAR2(50),
+    Opening_Day VARCHAR2(20),
+    Closing_Day VARCHAR2(20),
+    Average_Cost_For_Two NUMBER, 
+    Most_Popular_Dish VARCHAR2(100),
+    Vegetarian_Options VARCHAR2(3)
+);
+
+INSERT INTO Restaurant7 (Restaurant_Name, Location, Cuisine, Opening_Day, Closing_Day, Average_Cost_For_Two, Most_Popular_Dish, Vegetarian_Options)
+VALUES ('Spice Route', 'Delhi', 'Indian', 'Monday', 'Sunday', '800', 'Butter Chicken', 'Yes');
+
+INSERT INTO Restaurant7 (Restaurant_Name, Location, Cuisine, Opening_Day, Closing_Day, Average_Cost_For_Two, Most_Popular_Dish, Vegetarian_Options)
+VALUES ('Tandoori Flame', 'Mumbai', 'Indian', 'Monday', 'Sunday', '1000', 'Tandoori Chicken', 'Yes');
+
+INSERT INTO Restaurant7 (Restaurant_Name, Location, Cuisine, Opening_Day, Closing_Day, Average_Cost_For_Two, Most_Popular_Dish, Vegetarian_Options)
+VALUES ('Dosa Hut', 'Bangalore', 'South Indian', 'Monday', 'Sunday', '600', 'Masala Dosa', 'Yes');
+
+INSERT INTO Restaurant7 (Restaurant_Name, Location, Cuisine, Opening_Day, Closing_Day, Average_Cost_For_Two, Most_Popular_Dish, Vegetarian_Options)
+VALUES ('Punjabi Dhaba', 'Chandigarh', 'Punjabi', 'Monday', 'Sunday', '900', 'Sarson Da Saag', 'Yes');
+
+INSERT INTO Restaurant7 (Restaurant_Name, Location, Cuisine, Opening_Day, Closing_Day, Average_Cost_For_Two, Most_Popular_Dish, Vegetarian_Options)
+VALUES ('Chettinad Feast', 'Chennai', 'South Indian', 'Monday', 'Sunday', '750', 'Chicken Chettinad', 'No');
+
+INSERT INTO Restaurant7 (Restaurant_Name, Location, Cuisine, Opening_Day, Closing_Day, Average_Cost_For_Two, Most_Popular_Dish, Vegetarian_Options)
+VALUES ('Punjabi Junction', 'Amritsar', 'Punjabi', 'Monday', 'Sunday', 850, 'Paneer Tikka', 'Yes');
+
+INSERT INTO Restaurant7 (Restaurant_Name, Location, Cuisine, Opening_Day, Closing_Day, Average_Cost_For_Two, Most_Popular_Dish, Vegetarian_Options)
+VALUES ('Vada Pavilion', 'Hyderabad', 'South Indian', 'Monday', 'Sunday', 500, 'Masala Vada', 'Yes');
+
+INSERT INTO Restaurant7 (Restaurant_Name, Location, Cuisine, Opening_Day, Closing_Day, Average_Cost_For_Two, Most_Popular_Dish, Vegetarian_Options)
+VALUES ('Biryani House', 'Kolkata', 'Hyderabadi', 'Monday', 'Sunday', 900, 'Hyderabadi Biryani', 'Yes');
+
+INSERT INTO Restaurant7 (Restaurant_Name, Location, Cuisine, Opening_Day, Closing_Day, Average_Cost_For_Two, Most_Popular_Dish, Vegetarian_Options)
+VALUES ('Gujarati Delight', 'Ahmedabad', 'Gujarati', 'Monday', 'Sunday', 700, 'Dhokla', 'Yes');
+
+INSERT INTO Restaurant7 (Restaurant_Name, Location, Cuisine, Opening_Day, Closing_Day, Average_Cost_For_Two, Most_Popular_Dish, Vegetarian_Options)
+VALUES('Kerala Spice', 'Kochi', 'Kerala', 'Monday', 'Sunday', 1000, 'Fish Curry', 'Yes');
+
+SELECT * FROM Restaurant7;
+
+SELECT * FROM Restaurant_bkp;
+
+CREATE TABLE Restaurant_bkp AS SELECT * FROM Restaurant7;
+
+SELECT * FROM Restaurant7;
+
+DROP TABLE Restaurant7;
+
+RENAME Restaurant_bkp TO Restaurant7;
+
+ALTER TABLE Restaurant7 ADD Contact_Number NUMBER;
+
+SELECT * FROM Restaurant7;
+
+ALTER TABLE Restaurant7 RENAME COLUMN Contact_Number TO Mobile_Number;
+
+SELECT * FROM Restaurant7;
+
+ALTER TABLE Restaurant7 DROP COLUMN Mobile_Number;
+
+SELECT * FROM Restaurant7;
+
+COMMIT;
+
+SELECT Restaurant_Name FROM Restaurant7;
+
+SELECT Location FROM Restaurant7;
+
+CREATE TABLE Menu (
+    Item_Name VARCHAR2(100),
+    Cuisine_Type VARCHAR2(50),
+    Price NUMBER
+);
+
+INSERT INTO Menu (Item_Name, Cuisine_Type, Price) VALUES ('Butter Chicken', 'Indian', 12.99);
+
+INSERT INTO Menu (Item_Name, Cuisine_Type, Price) VALUES('Tandoori Chicken', 'Indian', 11.99);
+
+INSERT INTO Menu (Item_Name, Cuisine_Type, Price) VALUES('Masala Dosa', 'South Indian', 8.99);
+
+INSERT INTO Menu (Item_Name, Cuisine_Type, Price) VALUES('Sarson Da Saag', 'Punjabi', 10.99);
+
+INSERT INTO Menu (Item_Name, Cuisine_Type, Price) VALUES('Chicken Chettinad', 'South Indian', 13.99);
+
+ALTER TABLE Menu ADD Rating NUMBER;
+   
+SELECT * FROM Menu;
+
+ALTER TABLE Menu DROP COLUMN Rating;
+
+SAVEPOINT D;
+
+ROLLBACK TO D;
+
+CREATE TABLE Restaurant8 (
+    Restaurant_ID INT PRIMARY KEY,
+    Restaurant_Name VARCHAR2(100) NOT NULL,
+    Location VARCHAR2(100) NOT NULL,
+    Cuisine VARCHAR2(50),
+    Average_Cost_For_Two NUMBER(6,2) CHECK (Average_Cost_For_Two > 800),
+    CONSTRAINT cuisine_check CHECK (Cuisine IN ('Indian', 'Italian', 'Chinese', 'Mexican', 'Japanese'))
+);
+
+INSERT INTO Restaurant8 (Restaurant_ID, Restaurant_Name, Location, Cuisine, Average_Cost_For_Two) VALUES (1, 'Namaste India', 'Mumbai, India', 'Indian', 1200);
+
+INSERT INTO Restaurant8 (Restaurant_ID, Restaurant_Name, Location, Cuisine, Average_Cost_For_Two) VALUES (2, 'Pasta Paradise', 'Rome, Italy', 'Italian', 1500);
+
+INSERT INTO Restaurant8 (Restaurant_ID, Restaurant_Name, Location, Cuisine, Average_Cost_For_Two) VALUES (3, 'Szechuan Delight', 'Beijing, China', 'Chinese', 800);
+
+INSERT INTO Restaurant8 (Restaurant_ID, Restaurant_Name, Location, Cuisine, Average_Cost_For_Two) VALUES (4, 'Taco Time', 'Mexico City, Mexico', 'Mexican', 1000);
+
+INSERT INTO Restaurant8 (Restaurant_ID, Restaurant_Name, Location, Cuisine, Average_Cost_For_Two) VALUES (5, 'Sushi Sensation', 'Tokyo, Japan', 'Japanese', 2000);
+
+INSERT INTO Restaurant8 (Restaurant_ID, Restaurant_Name, Location, Cuisine, Average_Cost_For_Two) VALUES (6, 'Foodie Delight', 'Beijing, China', 'Chinese', 800);
+
+INSERT INTO Restaurant8 (Restaurant_ID, Restaurant_Name, Location, Cuisine, Average_Cost_For_Two) VALUES (5, 'Tasty Sensation', 'Tokyo, Japan', 'Japanese', 700);
+
+INSERT INTO Restaurant8 (Restaurant_ID, Restaurant_Name, Location, Cuisine, Average_Cost_For_Two) VALUES (7, 'Finey Time', 'Mexico City, Mexico', 'Europian', 1000);
+
+SELECT * FROM Restaurant8;
+
+CREATE TABLE Restaurant6 (
+    Restaurant_ID INT PRIMARY KEY,
+    Restaurant_Name VARCHAR2(100) NOT NULL,
+    Location VARCHAR2(100) UNIQUE,
+    Cuisine VARCHAR2(50) DEFAULT 'Indian',
+    Average_Cost_For_Two NUMBER(6,2)
+);
+
+INSERT INTO Restaurant6 (Restaurant_ID, Restaurant_Name, Location, Average_Cost_For_Two) VALUES ('1','Biryani Bliss', 'Hyderabad, India', 800);
+
+INSERT INTO Restaurant6 (Restaurant_ID, Restaurant_Name, Location, Average_Cost_For_Two) VALUES ('2','Pizza Palace', 'New York, USA', 1500);
+
+INSERT INTO Restaurant6 (Restaurant_ID, Restaurant_Name, Location, Average_Cost_For_Two) VALUES('3','Dim Sum Delight', 'Hong Kong, China', 600);
+
+INSERT INTO Restaurant6 (Restaurant_ID, Restaurant_Name, Location, Average_Cost_For_Two) VALUES('4','Taco Terrace', 'Mexico City, Mexico', 900);
+
+INSERT INTO Restaurant6 (Restaurant_ID, Restaurant_Name, Location, Average_Cost_For_Two) VALUES('5','Sushi Sanctuary', 'Tokyo, Japan', 2000);
+INSERT INTO Restaurant6 (Restaurant_ID, Restaurant_Name, Location,Cuisine, Average_Cost_For_Two) VALUES('6','juicy chat', 'france','europian', 4000);
+
+SELECT * FROM Restaurant6;
+
+CREATE TABLE Food5 (
+    Food_ID INT PRIMARY KEY,
+    Food_Name VARCHAR2(100) NOT NULL
+);
+
+SELECT * FROM Food5;
+
+INSERT INTO FOOD5 VALUES ('102','Fried Rice');
+
+INSERT INTO FOOD5 VALUES ('101','Rice');
+
+INSERT INTO FOOD5 VALUES ('102','Fried Chicken');
+
+
+
+CREATE TABLE Branch5 (
+    Branch_ID INT PRIMARY KEY,
+    Branch_Name VARCHAR2(100) NOT NULL,
+    Food_ID INT REFERENCES Food5
+);
+
+SELECT * FROM Branch5;
+
+INSERT INTO Branch5 VALUES ('501','Tenkasi','101');
+
+INSERT INTO Branch5 VALUES ('502','Trichy','102');
+
+INSERT INTO Branch5 VALUES ('503','Madurai','101');
+
+CREATE TABLE Customers7(
+Customer_ID INT NOT NULL,
+Customer_Name VARCHAR2(50),
+PRIMARY KEY(Customer_ID)
+);
+
+CREATE SEQUENCE Customer7_ID MINVALUE 1 START WITH 1 CACHE 10;
+
+INSERT INTO Customers7 VALUES(Customer7_ID.NEXTVAL, 'Mubeen');
+
+
+INSERT INTO Customers7 VALUES(Customer7_ID.NEXTVAL, 'Vishnu');
+
+INSERT INTO Customers7 VALUES(Customer7_ID.NEXTVAL, 'Mukthar');
+
+INSERT INTO Customers7 VALUES(Customer7_ID.NEXTVAL, 'Kumaran');
+
+INSERT INTO Customers7 VALUES(Customer7_ID.NEXTVAL, 'Susi');
+
+INSERT INTO Customers7 VALUES(Customer7_ID.NEXTVAL, 'Dhanush');
+
+INSERT INTO Customers7 VALUES(Customer7_ID.NEXTVAL, 'Sai');
+
+INSERT INTO Customers7 VALUES(Customer7_ID.NEXTVAL, 'Naveen');
+
+INSERT INTO Customers7 VALUES(Customer7_ID.NEXTVAL, 'Karan');
+
+SELECT  * FROM Customers7;
