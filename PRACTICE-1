@@ -1,0 +1,21 @@
+CREATE TABLE student
+(
+FIRST_name varchar2(10),
+last_name varchar2(10),
+roll_no number(10),
+class_sec varchar(3),
+classteacher_name VARCHAR2(20),
+dept_name varchar2(10),
+mobile_no NUMBER(10),
+college_name VARCHAR2(30)
+);
+
+insert into student values('mukthar','mubeen','180901075','a','priya','EEE','1234545677','saveetha eng college');
+insert into student values('sai','vishnu','180901076','A','priya','EEE','1234545655','saveetha eng college');
+insert into student values('ram','kumaran','180901068','B','divya','EEE','1234525677','saveetha eng college');
+insert into student values('akif','rahman','180901069','B','divya','EEE','1212545677','saveetha eng college');
+insert into student values('akil','rahim','180901077','C','sri','EEE','1234545077','saveetha eng college');
+insert into student values('mani','kandan','180901078','C','sri','EEE','1234515677','saveetha eng college');
+insert into student values('susi','kumar','180901090','D','vrm','EEE','2234545677','saveetha eng college');
+insert into student values('logesh','kannan','180901091','D','vrm','EEE','1294545677','saveetha eng college');
+select * from student;
